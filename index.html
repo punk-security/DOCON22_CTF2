@@ -1,0 +1,41 @@
+<html>
+
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"></script>
+
+<body>
+    <h1> Lyric Filter 3000 - All the best lyricz, now with filters!</h1>
+    <div id="searchbox"></div>
+    <div id="hits"></div>
+</body>
+
+<script>
+    const search = instantsearch({
+  indexName: 'punk_PUBLIC_INDEX',
+  searchClient: algoliasearch('SBD4QQONZU', '7086ec0b05107bb2dcc86f177e83c287'),
+});
+
+search.addWidgets([
+  instantsearch.widgets.searchBox({
+    container: '#searchbox',
+    placeholder: 'Lyric Filter 3000 🎶'
+  }),
+  instantsearch.widgets.hits({
+    container: '#hits',
+    templates: {
+        item: "🎵 {{line}}"
+    },
+
+  }
+  ),
+  instantsearch.widgets.configure({
+    hitsPerPage: 25,
+  })
+]
+)
+
+search.start();
+
+</script>
+
+</html>
